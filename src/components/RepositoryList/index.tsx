@@ -1,9 +1,10 @@
 import { FaGithubSquare } from 'react-icons/fa'
 import { AiOutlineSearch } from 'react-icons/ai';
+import { Container } from './style';
 
 export function RepositoryList() {
     return (
-        <div>
+        <Container>
             <header>
                 <h1>
                     <FaGithubSquare />
@@ -25,6 +26,6 @@ export function RepositoryList() {
                     Repo
                 </li> 
             </ul>
-        </div>        
+        </Container>        
     )
 }
