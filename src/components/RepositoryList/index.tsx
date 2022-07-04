@@ -1,5 +1,5 @@
 import { RepositoryItem } from '../RepositoryItem';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import axios from 'axios';
 
 import { FaGithubSquare } from 'react-icons/fa'
@@ -10,7 +10,9 @@ export function RepositoryList() {
     const [repositories, setRepositories] = useState([]);
     const [user, setUser] = useState('');
 
-    function fetchUserRepositories() {
+    function fetchUserRepositories(event: FormEvent) {
+        event.preventDefault()
+
         axios.get(`https://api.github.com/users/${user}/repos`)      
         .then(response => setRepositories(response.data))
         .catch(error => alert(error))
@@ -40,7 +42,6 @@ export function RepositoryList() {
             </header>
 
             <ul>
-                <RepositoryItem name="teste" description="desc test" html_url="linkteste" />
             </ul>
         </Container>        
     )
