@@ -6,8 +6,14 @@ import { FaGithubSquare } from 'react-icons/fa'
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Container } from './style';
 
+type RepositoryType = {
+    name: string;
+    description: string;
+    html_url: string;  
+}
+
 export function RepositoryList() {
-    const [repositories, setRepositories] = useState([]);
+    const [repositories, setRepositories] = useState<RepositoryType[]>([]);
     const [user, setUser] = useState('');
 
     function fetchUserRepositories(event: FormEvent) {
@@ -42,6 +48,13 @@ export function RepositoryList() {
             </header>
 
             <ul>
+                {
+                    repositories.map(repository => {
+                        return (
+                            <RepositoryItem key={repository.name} repository={repository} />
+                        )
+                    })
+                }
             </ul>
         </Container>        
     )
